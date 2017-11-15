@@ -1,0 +1,10 @@
+﻿/* For removing the 'navbar-eating-content' problem*/
+body {
+    padding-top: 80px;
+}
+
+@media (max-width: 500px) {
+    body {
+        padding-top: 50px;
+    }
+}

@@ -1,0 +1,127 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Admission Portal</title>
+    <link href="Content/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="Content/css/material-kit.css" rel="stylesheet" type="text/css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <link href="Content/css/style.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <script type = "text/javascript">
+        function logout() {
+            Logout();
+        }
+    </script>
+
+    <script type="text/javascript">
+        function filterDigits(eventInstance) {
+            eventInstance = eventInstance || window.event;
+            key = eventInstance.keyCode || eventInstance.which;
+            if ((47 < key) && (key < 58) || key == 8) {
+                return true;
+            } else {
+                if (eventInstance.preventDefault) eventInstance.preventDefault();
+                eventInstance.returnValue = false;
+                return false;
+            } //if
+        } //filterDigits
+        function filterAlphabet(eventInstance) {
+            eventInstance = eventInstance || window.event;
+            key = eventInstance.keyCode || eventInstance.which;
+            if ((65 <= key) && (key <= 90) || key == 8 || (key >= 97) && (key <= 122) || key == 32) {
+                return true;
+            } else {
+                if (eventInstance.preventDefault) eventInstance.preventDefault();
+                eventInstance.returnValue = false;
+                return false;
+            } //if
+        } //filterDigits
+        function filterAlphaNumeric(eventInstance) {
+            eventInstance = eventInstance || window.event;
+            key = eventInstance.keyCode || eventInstance.which;
+            if ((48 <= key) && (key <= 57) || (65 <= key) && (key <= 90) || key == 8 || (key >= 97) && (key <= 122) || key == 32) {
+                return true;
+            } else {
+                if (eventInstance.preventDefault) eventInstance.preventDefault();
+                eventInstance.returnValue = false;
+                return false;
+            } //if
+        } //filterDigits
+        function filterAlphaNumericExt(eventInstance) {
+            eventInstance = eventInstance || window.event;
+            key = eventInstance.keyCode || eventInstance.which;
+            if ((48 <= key) && (key <= 57) || (65 <= key) && (key <= 90) || key == 8 || (key >= 97) && (key <= 122) || key == 32 || key == 44 || key == 46) {
+                return true;
+            } else {
+                if (eventInstance.preventDefault) eventInstance.preventDefault();
+                eventInstance.returnValue = false;
+                return false;
+            } //if
+        } //filterDigits
+
+        // mouse click disable
+        var BM = 2;
+        var BR = 3;
+
+        function mouseDown(e)
+        {
+            try {
+                if (event.button == BM || event.button == BR)
+                    return false;
+            } catch (e) {
+                if (e.which == BR)
+                    return false;
+            }
+        }
+
+        document.oncontextmenu = function () { return false; }
+        document.onmousedown = mouseDown;
+
+
+    </script>
+</head>
+<body>
+
+    <nav class="navbar navbar-fixed-top navbar-primary">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" style="left: 0px; top: 0px; width: 41px; height: 22px">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="admission_form.aspx">CURaj Admission Portal</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="admission_form.aspx">Home</a></li>
+            <li><a href="https://www.cucet2017.co.in/WebPages/StaticPages/Home.aspx">CUCET</a></li>
+            <li><a href="hostel_form.aspx">Hostel Admission</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+              <li><a href="default.aspx">Logout</a></li>
+          </ul>            
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+
+    <div class="container">
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    
+    <script src="Scripts/jquery-3.2.1.min.js"> </script>
+    <script src="Scripts/bootstrap.min.js"> </script>
+    <script src="Scripts/bootstrap-datepicker.js"> </script>
+    <script src="Scripts/material.min.js"> </script>
+    <script src="Scripts/material-kit.js"> </script>
+    <script src="Scripts/nouislider.min.js"> </script>
+</body>
+</html>
